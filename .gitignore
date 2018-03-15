@@ -1,0 +1,14 @@
+*.o
+*.a
+run
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+Makefile
+*.exe
+.*.swp
+.*.swo
+.*.py
+ *.DS_Store
+build
+build_debug

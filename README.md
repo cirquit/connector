@@ -19,14 +19,14 @@ make
 ```c++  
   // Create the object you want to send  
   MyObject my_object;  
-
   unsigned port{4242}; // The port you want to send the data at  
   std::string ip {"127.0.0.1"}; // The IP Adress of your receiver or 127.0.0.1 for localhost  
   // creation of sender object  
   connector::sender<MyObject> sndr{};  
   sndr.init_sender_udp(port, ip);  
   sndr.send_udp(&my_object);  
-```  
+```
+
 
 * Receiver  
   * Include `receiver.h` in your project  
@@ -41,6 +41,7 @@ make
   rcvr.init_receiver_udp(port);  
   rcvr.receive_udp(my_object);  
 ```  
+
 
 ### Tip  
 The `send_udp()` and `receive_udp()` functions have a default parameter where you can set the size of the buffer:  

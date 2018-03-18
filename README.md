@@ -17,7 +17,6 @@ Connector
   * Include `sender.h` in your project  
   * Send any object (besides `Strings`) like so:  
   ```c++
-    #include "sender.h"  
     // Create the object you want to send
     MyObject my_object;
 
@@ -33,7 +32,6 @@ Connector
   * Include `receiver.h` in your project  
   * Receive any object like so:  
   ```c++
-    #include "../library/receiver.h"
     // Construct an instance of the object you want to receive
     MyObject my_object;
 

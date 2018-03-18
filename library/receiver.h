@@ -38,7 +38,7 @@ class receiver
   public:
     
     // Initialise UDP Socket Data - (the UDP receiving part is mostly written in C)
-    void init_udp(const int port) {
+    void init_receiver_udp(const int port) {
       // Bind socket to local Server Port
       _servAddr.sin_family = AF_INET;
       _servAddr.sin_addr.s_addr = htonl(INADDR_ANY);

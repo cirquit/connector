@@ -26,7 +26,7 @@ int main() {
   unsigned port{4242};
   // creation of receiver object
   connector::receiver<object_t> rcvr{};
-  rcvr.init_udp(port);
+  rcvr.init_receiver_udp(port);
   while(true) {
 
     rcvr.receive_udp(object);

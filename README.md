@@ -40,8 +40,8 @@ make
   unsigned port{4242}; // The port you want to receive data at
   // creation of receiver object
   connector::receiver<MyObject> rcvr{};
-  rcvr.init_receiver_udp(port);
-  rcvr.receive_udp(my_object);
+  int socket = rcvr.init_receiver_udp(port);
+  rcvr.receive_udp(my_object, socket);
 ```
 
 
@@ -50,5 +50,5 @@ The `send_udp()` and `receive_udp()` functions have a default parameter where yo
 ```c++
   void send_udp(T * object_to_send, unsigned buffer=2048) {}
 
-  void receive_udp(T & out, unsigned buffer=2048) {}
+  void receive_udp(T & out, int socket, unsigned buffer=2048) {}
 ```  

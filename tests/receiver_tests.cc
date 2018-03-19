@@ -44,9 +44,9 @@ TEST_CASE("Basic functionality of receiver", "[receiver]") {
       unsigned port{4242};
       // creation of receiver object
       connector::receiver<object_t> rcvr{};
-      rcvr.init_receiver_udp(port);
+      int skt = rcvr.init_receiver_udp(port);
 
-      rcvr.receive_udp(recv_obj);
+      rcvr.receive_udp(recv_obj, skt);
       REQUIRE(recv_obj.distance == 42.3);
       REQUIRE(recv_obj.angle == 42.4);
       REQUIRE(recv_obj.yaw == 42.5);

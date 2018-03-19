@@ -53,7 +53,11 @@ class receiver
       std::cout << "Receiving...\n";
       // in `out` we store our received data
       int data = recvfrom(_skt, &out, buffer, 0, (struct sockaddr *) &_cliAddr, &_len); 
-      if(data > 0) std::cerr << "Data received: " << data << '\n';
+      if(data > 0){
+        std::cout << "Data received: " << data << '\n';
+      } else {
+        std::cout << "No Data received: " << data << '\n';
+      }
     }
     /*
     T receive_udp(unsigned buffer=2048) {

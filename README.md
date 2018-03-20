@@ -44,6 +44,15 @@ make
   rcvr.receive_udp(my_object, socket);
 ```
 
+### Documentation  
+Created with [doxygen](https://www.stack.nl/~dimitri/doxygen/ "Doxygen Website") (with Markdown support)  
+  * [HTML](documentation/html/index.html)  
+Ubuntu:  
+
+```bash
+$ firefox documentation/html/index.html
+```
+
 
 ### Tip  
 The `send_udp()` and `receive_udp()` functions have a default parameter where you can set the size of the buffer:  

@@ -24,17 +24,38 @@
 #include <iostream>
 #include <memory>
 
+/** \brief connector namespace, which is the wrapper fo the connector library
+ *
+ */
 namespace connector {
 
-template<typename T> // T = objectlist
+/** \brief A templated Receiver class with one template argument
+ *
+ * Template argument:
+ * * `T` = Type of the object-to-receive
+ *
+ * See examples at [tests/receiver_tests.cc](../../tests/receiver_tests.cc)
+ */
+template<typename T> // T = object-to-receive
 class receiver
 {
-    // typenames
-  public:
-        
 
     // methods
   public:
+    /**
+     * This function initializes the parameters needed for establishing a **UDP** connection with the sender
+     * 
+     * It takes a port (`int`) as Argument and only needs to be called once
+     *
+     * Modifying:
+     *    * `_cliAddr`
+     *    * `_servAddr`
+     *    * `_bnd`
+     *    * `port`
+     *
+     * Return:
+     *    * socket
+     */
     int init_receiver_udp(const int port) {
       // Bind socket to local Server Port
       _servAddr.sin_family = AF_INET;
@@ -49,8 +70,13 @@ class receiver
       return _skt;
     }
     
-
-   // void receive_udp(T & out, unsigned buffer=2048) {
+    /** \brief Main UDP function to receive objects
+     * 
+     * The **out** parameter should be of the same **type** and **size** (`buffer`) as the object on the [sender](classconnector_1_1sender.html) side
+     *
+     * Modifying:
+     *    * `out`
+     */
     void receive_udp(T & out, const int socket, unsigned buffer=2048) {
       std::cout << "Receiving...\n";
       // in `out` we store our received data
@@ -62,16 +88,38 @@ class receiver
       }
     }
 
-    
-    // member
-    public:
-
     // member
     private:
+    /** \brief A container to store sender information
+     *
+     * Members:
+     *  * `short` sin_family
+     *  * `unsigned short` sin_port
+     *  * `struct` in_addr sin_addr
+     *  * `char` sin_zero[0]
+     *
+     * Needed include: `<netinet/in.h>`
+     */
       struct sockaddr_in _servAddr;
+    /** \brief A container to store client information
+     *
+     * Members:
+     *  * `short` sin_family
+     *  * `unsigned short` sin_port
+     *  * `struct` in_addr sin_addr
+     *  * `char` sin_zero[0]
+     *
+     * Needed include: `<netinet/in.h>`
+     */
       struct sockaddr_in _cliAddr;
+      /** \brief The socket to send data to the client from
+      */
       int _skt{0};
-      int _bnd{0};  // Return value of binding function
+      /** \brief Return value of `bind()`
+      */
+      int _bnd{0}; 
+      /** \brief Length of IP-Adress
+      */
       unsigned _len{0}; // Length of ipAdress
 };
 } // namespace connector

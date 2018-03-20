@@ -1,0 +1,93 @@
+\hypertarget{classconnector_1_1sender}{}\section{connector\+:\+:sender$<$ T $>$ Class Template Reference}
+\label{classconnector_1_1sender}\index{connector\+::sender$<$ T $>$@{connector\+::sender$<$ T $>$}}
+
+
+A templated Sender class with one template argument.  
+
+
+
+
+{\ttfamily \#include $<$sender.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classconnector_1_1sender_ae9cd837112f0cbca040abe23a2a6ee9e}{init\+\_\+sender\+\_\+udp} (const int port, const std\+::string ip)
+\item 
+void \hyperlink{classconnector_1_1sender_af7f9d1a8b7939539040de4024d2a48ed}{send\+\_\+udp} (T $\ast$object\+\_\+to\+\_\+send, unsigned buffer=2048)
+\begin{DoxyCompactList}\small\item\em Main U\+DP function to send objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct sockaddr\+\_\+in \hyperlink{classconnector_1_1sender_a340dd695c5b8606e2a94c0fa9dbe8e0b}{\+\_\+cli\+Addr}
+\begin{DoxyCompactList}\small\item\em A container to store client information. \end{DoxyCompactList}\item 
+int \hyperlink{classconnector_1_1sender_ae911e30ba70379091f3a995b3e56c81e}{\+\_\+skt} \{0\}\hypertarget{classconnector_1_1sender_ae911e30ba70379091f3a995b3e56c81e}{}\label{classconnector_1_1sender_ae911e30ba70379091f3a995b3e56c81e}
+
+\begin{DoxyCompactList}\small\item\em The socket to send data to the client from. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\\*
+class connector\+::sender$<$ T $>$}
+
+A templated Sender class with one template argument. 
+
+Template argument\+:
+\begin{DoxyItemize}
+\item {\ttfamily T} = Type of the object-\/to-\/send
+\end{DoxyItemize}
+
+See examples at \href{../../tests/sender_tests.cc}{\tt tests/sender\+\_\+tests.\+cc} 
+
+\subsection{Member Function Documentation}
+\index{connector\+::sender@{connector\+::sender}!init\+\_\+sender\+\_\+udp@{init\+\_\+sender\+\_\+udp}}
+\index{init\+\_\+sender\+\_\+udp@{init\+\_\+sender\+\_\+udp}!connector\+::sender@{connector\+::sender}}
+\subsubsection[{\texorpdfstring{init\+\_\+sender\+\_\+udp(const int port, const std\+::string ip)}{init_sender_udp(const int port, const std::string ip)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf connector\+::sender}$<$ T $>$\+::init\+\_\+sender\+\_\+udp (
+\begin{DoxyParamCaption}
+\item[{const int}]{port, }
+\item[{const std\+::string}]{ip}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classconnector_1_1sender_ae9cd837112f0cbca040abe23a2a6ee9e}{}\label{classconnector_1_1sender_ae9cd837112f0cbca040abe23a2a6ee9e}
+This function initializes the parameters needed for establishing a {\bfseries U\+DP} connection with the receiver It takes a port ({\ttfamily int}) and an IP Adress({\ttfamily std\+::string}) as Arguments and only needs to be called once
+
+Modifying\+:
+\begin{DoxyItemize}
+\item {\ttfamily \+\_\+cli\+Addr}
+\item {\ttfamily \+\_\+skt}
+\item {\ttfamily port}
+\item {\ttfamily ip} 
+\end{DoxyItemize}\index{connector\+::sender@{connector\+::sender}!send\+\_\+udp@{send\+\_\+udp}}
+\index{send\+\_\+udp@{send\+\_\+udp}!connector\+::sender@{connector\+::sender}}
+\subsubsection[{\texorpdfstring{send\+\_\+udp(\+T $\ast$object\+\_\+to\+\_\+send, unsigned buffer=2048)}{send_udp(T *object_to_send, unsigned buffer=2048)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf connector\+::sender}$<$ T $>$\+::send\+\_\+udp (
+\begin{DoxyParamCaption}
+\item[{T $\ast$}]{object\+\_\+to\+\_\+send, }
+\item[{unsigned}]{buffer = {\ttfamily 2048}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classconnector_1_1sender_af7f9d1a8b7939539040de4024d2a48ed}{}\label{classconnector_1_1sender_af7f9d1a8b7939539040de4024d2a48ed}
+
+
+Main U\+DP function to send objects. 
+
+The {\ttfamily object\+\_\+to\+\_\+send} should be of the same type and size ({\ttfamily buffer}) as the object on the \href{classconnector_1_1receiver.html}{\tt receiving} side 
+
+\subsection{Member Data Documentation}
+\index{connector\+::sender@{connector\+::sender}!\+\_\+cli\+Addr@{\+\_\+cli\+Addr}}
+\index{\+\_\+cli\+Addr@{\+\_\+cli\+Addr}!connector\+::sender@{connector\+::sender}}
+\subsubsection[{\texorpdfstring{\+\_\+cli\+Addr}{_cliAddr}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ struct sockaddr\+\_\+in {\bf connector\+::sender}$<$ T $>$\+::\+\_\+cli\+Addr\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classconnector_1_1sender_a340dd695c5b8606e2a94c0fa9dbe8e0b}{}\label{classconnector_1_1sender_a340dd695c5b8606e2a94c0fa9dbe8e0b}
+
+
+A container to store client information. 
+
+Members\+:
+\begin{DoxyItemize}
+\item {\ttfamily short} sin\+\_\+family
+\item {\ttfamily unsigned short} sin\+\_\+port
+\item {\ttfamily struct} in\+\_\+addr sin\+\_\+addr
+\item {\ttfamily char} sin\+\_\+zero\mbox{[}0\mbox{]}
+\end{DoxyItemize}
+
+Needed include\+: {\ttfamily $<$netinet/in.\+h$>$} 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+library/sender.\+h\end{DoxyCompactItemize}

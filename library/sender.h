@@ -25,21 +25,34 @@
 #include <string>
 #include <typeinfo>
 
+/** \brief connector namespace, which is the wrapper fo the connector library
+ *
+ */
 namespace connector {
 
-template<typename T> // T = objectlist
+/** \brief A templated Sender class with one template argument
+ *
+ * Template argument:
+ * * `T` = Type of the object-to-send
+ *
+ * See examples at [tests/sender_tests.cc](../../tests/sender_tests.cc)
+ */
+template<typename T> // T = object-to-send
 class sender {
-
-    // typenames
-    public:
-        
-    // constructors
-    public:
-//        Sender() = default;
 
     // methods
     public:
- //       void send_ros(const T & t);
+      /**
+       * This function initializes the parameters needed for establishing a **UDP** connection with the receiver
+       * It takes a port (`int`) and an IP Adress(`std::string`) as Arguments and
+       * only needs to be called once
+       *
+       * Modifying:
+       *    * `_cliAddr`
+       *    * `_skt`
+       *    * `port`
+       *    * `ip`
+       */
       void init_sender_udp(const int port, const std::string ip) {
         _skt = socket(AF_INET, SOCK_DGRAM, 0);
         _cliAddr.sin_family = AF_INET;
@@ -47,22 +60,30 @@ class sender {
         inet_pton(AF_INET, ip.c_str(), &(_cliAddr.sin_addr));
       }
 
+      /** \brief Main UDP function to send objects
+       * 
+       * The `object_to_send` should be of the same type and size (`buffer`) as the object on the [receiving](classconnector_1_1receiver.html) side
+       */
         void send_udp(T * object_to_send, unsigned buffer=2048) {
 
           sendto(_skt, object_to_send, buffer, 0, (struct sockaddr *) &_cliAddr, sizeof(sockaddr_in));
         }
-/*
-        const void close_udp_socket() const {
-          close(_skt);
-        }
-        */
-
-    // member
-    public:
 
     // member
     private:
+        /** \brief A container to store client information
+         *
+         * Members:
+         *  * `short` sin_family
+         *  * `unsigned short` sin_port
+         *  * `struct` in_addr sin_addr
+         *  * `char` sin_zero[0]
+         *
+         * Needed include: `<netinet/in.h>`
+         */
           struct sockaddr_in _cliAddr;
+          /** \brief The socket to send data to the client from
+           */
           int _skt{0};
 };
 } // namespace connector

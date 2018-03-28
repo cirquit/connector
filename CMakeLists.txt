@@ -1,5 +1,19 @@
+# Copyright 2018 municHMotorsport e.V. <info@munichmotorsport.de>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 set(PROJECT_NAME Connector)
-set(LIB_NAME  connector)
+set(CONN_LIB_NAME  connector)
 #set(EXEC_NAME connector_exec)
 set(TEST_NAME_RECEIVER receiver_test)
 set(TEST_NAME_SENDER sender_test)
@@ -30,5 +44,4 @@ endif()
 
 # add the actual code
 add_subdirectory (library)
-#add_subdirectory (src)
 add_subdirectory (tests)

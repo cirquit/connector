@@ -33,11 +33,11 @@ add_compile_options(-std=c++14)
 
 # Compile differently if DEBUG_MODE is active
 if(DEBUG_MODE)
-    message("DEBUG_MODE is ON - no optimizations enabled")
+  message("DEBUG_MODE is ON - no optimizations enabled, console output ENABLED")
     add_definitions(-DDEBUG_MODE=1)
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -pthread -Wall -Wextra -Wfatal-errors -pedantic -g -fPIC")
 else()
-    message("DEBUG_MODE is OFF - O2 optimizations enabled")
+    message("DEBUG_MODE is OFF - O2 optimizations enabled, no console output")
     add_definitions(-DDEBUG_MODE=0)
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -pthread -Wall -Wextra -Werror -Wfatal-errors -pedantic -fPIC")
 endif()

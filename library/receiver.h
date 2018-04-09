@@ -63,9 +63,13 @@ class receiver
       _servAddr.sin_port = htons(port);
       // Create a UDP socket
       _skt = socket(AF_INET, SOCK_DGRAM, 0);
+#if DEBUG_MODE
       _skt < 0 ? std::cout << "Could not open Socket " << _skt << '\n' : std::cout << "Socket: " << _skt << '\n';
+#endif // DEBUG_MODE
       _bnd = bind(_skt, (struct sockaddr *) &_servAddr, sizeof(_servAddr));
+#if DEBUG_MODE
       _bnd < 0 ? std::cout << "Could not bind ports " << _bnd << '\n' : std::cout << "Bind: " << _bnd << '\n';
+#endif // DEBUG_MODE
       _len = sizeof(_cliAddr); // needed to store length of the IP-Adress
       return _skt;
     }
@@ -78,14 +82,18 @@ class receiver
      *    * `out`
      */
     void receive_udp(T & out, const int socket, unsigned buffer=2048) {
+#if DEBUG_MODE
       std::cout << "Receiving...\n";
+#endif
       // in `out` we store our received data
       int data = recvfrom(socket, &out, buffer, 0, (struct sockaddr *) &_cliAddr, &_len); 
+#if DEBUG_MODE
       if(data > 0){
         std::cout << "Data received: " << data << " Socket: " << socket << '\n';
       } else {
         std::cout << "No Data received: " << data << " Socket: " << socket << '\n';
       }
+#endif
     }
 
     // member

@@ -12,16 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set(SOURCESRECEIVER catch.h main.cc receiver_tests.cc)
-set(SOURCESSENDER catch.h main.cc sender_tests.cc)
+set(SOURCES_RECEIVER catch.h main.cc receiver_tests.cc)
+set(SOURCES_SENDER catch.h main.cc sender_tests.cc)
 #set(SOURCESRECEIVER receiver.cc)
 #set(SOURCESSENDER sender.cc)
 
 
-add_executable(${TEST_NAME_RECEIVER} ${SOURCESRECEIVER})
-target_link_libraries(${TEST_NAME_RECEIVER} ${LIB_NAME})
+add_executable(${TEST_NAME_RECEIVER} ${SOURCES_RECEIVER})
+target_link_libraries(${TEST_NAME_RECEIVER} ${CONN_LIB_NAME})
 
-add_executable(${TEST_NAME_SENDER} ${SOURCESSENDER})
-target_link_libraries(${TEST_NAME_SENDER} ${LIB_NAME})
+add_executable(${TEST_NAME_SENDER} ${SOURCES_SENDER})
+target_link_libraries(${TEST_NAME_SENDER} ${CONN_LIB_NAME})
 
 

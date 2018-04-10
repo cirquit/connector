@@ -88,7 +88,7 @@ namespace connector {
         }
 
         // connecting to socket, allowing a client to connect
-        void receive_tcp(T & out, const int socket, unsigned buffer=2048) {
+        void receive_tcp(T & out, const int socket, size_t buffer=2048) {
           int read_size = recv(socket, &out, buffer, 0);
         }
 

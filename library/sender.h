@@ -64,7 +64,7 @@ class sender {
        * 
        * The `object_to_send` should be of the same type and size (`buffer`) as the object on the [receiving](classconnector_1_1receiver.html) side
        */
-        void send_udp(T * object_to_send, unsigned buffer=2048) {
+        void send_udp(T * object_to_send, size_t buffer=2048) {
 
           sendto(_skt, object_to_send, buffer, 0, (struct sockaddr *) &_cliAddr, sizeof(sockaddr_in));
         }

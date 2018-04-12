@@ -44,4 +44,4 @@ endif()
 
 # add the actual code
 add_subdirectory (library)
-add_subdirectory (tests)
+# add_subdirectory (tests)

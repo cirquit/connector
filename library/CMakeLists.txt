@@ -1,5 +1,5 @@
 
-set(SOURCES sender.h receiver.h)
+set(SOURCES sender.h receiver.h util.h)
 
 #find_package(LAPACK REQUIRED)
 #link_directories(${LAPACK_LIBRARIES})

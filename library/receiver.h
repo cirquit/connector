@@ -57,7 +57,7 @@ namespace connector {
                 //! TCP constructor, client_count is default on 1
                 receiver (const int port, const int client_count = 1)
                     : _port(port), 
-                      _client_count(client_count)
+                    _client_count(client_count)
             { }
 
                 // methods
@@ -206,8 +206,7 @@ namespace connector {
                  *    * `out`
                  */
                 template<class U>
-                    void receive_udp(U & out) const
-                    {
+                    void receive_udp(U & out)                     {
                         recvfrom(_skt, &out, sizeof(U), 0, (struct sockaddr *) &_cliAddr, &_len); 
                     }
 

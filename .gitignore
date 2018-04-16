@@ -12,4 +12,4 @@ Makefile
  *.DS_Store
 build
 build_debug
-build-debug
+build-debug/

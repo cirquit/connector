@@ -19,13 +19,14 @@ int main() {
     connector::client<connector::TCP> client(port, ip);
     client.init();
 
-    double x = 0;
+    std::string to_server = "PING";
+    char buffer[255];
     while(true)
     {   
-        client.send_tcp<double>(++x);
-        std::cout << "CLIENT: Send - x = " << x << std::endl;
-        client.receive_tcp<double>(x);
-        std::cout << "CLIENT: Got - x = " << x << std::endl;
+        client.send_tcp<const char>(to_server.c_str()[0], 5 * sizeof(char));
+//        std::cout << "CLIENT: Send -  = " << to_server << std::endl;
+        client.receive_tcp<char>(buffer[0], 5 * sizeof(char));
+        std::cout << "CLIENT: Got -  buffer = " << buffer << std::endl;
     }
 
 

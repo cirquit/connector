@@ -47,6 +47,10 @@ class server< TCP > {
         public:
     //! TCP constructor, client_count is default on 1
     server( const int port ) : _port( port ) {}
+    //! TCP destructor, closing socket
+    ~server(){
+        close(_skt);
+    }
 
     // methods
         public:
@@ -156,7 +160,10 @@ class server< UDP > {
     public:
     //! UDP constructor
     server( const int port ) : _port( port ) {}
-
+    //! UDP destructor, closing socket
+    ~server(){
+        close(_skt);
+    }
     // methods
     public:
     int init( ) {

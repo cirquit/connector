@@ -51,6 +51,10 @@ class client< TCP > {
     client( const int port, const std::string ip)
         : _port( port ), _ip( ip ) {}
 
+    //! TCP destructor, closing socket
+    ~client(){
+        close(_skt);
+    }
     // methods
         public:
     /**
@@ -146,6 +150,11 @@ class client < UDP >
      */
     client(const int port, const std::string ip)
     : _port(port), _ip(ip) { }
+
+    //! UDP destructor, closing socket
+    ~client(){
+        close(_skt);
+    }
 
     void init()
     {

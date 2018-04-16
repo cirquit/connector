@@ -10,8 +10,18 @@
 // #include <memory>
 #include <string>
 #include <ctime>
+// udp/tcp includes
+#include <arpa/inet.h>
+#include <iostream>
+#include <memory>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 #include "../library/server.h"
+
 
 
 void timeit_(std::function<void()> f)
@@ -30,17 +40,19 @@ int main() {
     
     std::string to_send = "PONG";
     char buffer[255];  
+    uint32_t x;
     while(true)
     {   
-        timeit_([&](){
-            server.receive_udp<char>(buffer[0], 5 * sizeof(char));
-        });
 
         //std::cout << "SERVER: Got from client - buffer = " << buffer << std::endl;
-        server.send_udp<const char>(to_send.c_str()[0], 5 * sizeof(char));
+        server.receive_udp<uint32_t>(x,  sizeof(uint32_t));
+        //server.send_udp<uint32_t>(x,  sizeof(uint32_t));
+        //server.send_udp<const char>(to_send.c_str()[0], 5 * sizeof(char));
+        std::cout << "SERVER: Got from client - x = " << x << std::endl;
         
     }
 }
+
   // typedef struct {
   //   double distance;
   //   double angle;

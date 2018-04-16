@@ -111,7 +111,7 @@ class server< TCP > {
     //! \todo
     template < class U >
     void send_tcp( U &out, const size_t buffer ) const {
-        send( _skt, static_cast< void * >( &out ), buffer, 0 );
+        send( _skt, static_cast< const void * >( &out ), buffer, 0 );
     }
 
     // member

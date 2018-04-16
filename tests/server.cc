@@ -8,10 +8,18 @@
 
 #include <iostream>
 // #include <memory>
-// #include <string>
+#include <string>
+#include <ctime>
 
 #include "../library/server.h"
 
+
+void timeit_(std::function<void()> f)
+{
+      std::clock_t start = std::clock();
+      f();
+      std::cout << "Elapsed time: " << 1.0 / ((std::clock() - start) / static_cast<double>(CLOCKS_PER_SEC) * 1000)  << "kHz\n";
+}
 
 int main() {
 
@@ -19,13 +27,18 @@ int main() {
     connector::server<connector::TCP> server(port);
     server.init();
 
-    double x = 0;
+    
+    std::string to_send = "PONG";
+    char buffer[255];  
     while(true)
     {   
-        server.receive_tcp<double>(x);
-        std::cout << "SERVER: Got - x = " << x << std::endl;
-        server.send_tcp<double>(++x);
-        std::cout << "SERVER: Send - x = " << x << std::endl;
+        timeit_([&](){
+            server.receive_tcp<char>(buffer[0], 5 * sizeof(char));
+        });
+
+        //std::cout << "SERVER: Got from client - buffer = " << buffer << std::endl;
+        server.send_tcp<const char>(to_send.c_str()[0], 5 * sizeof(char));
+        
     }
 }
   // typedef struct {

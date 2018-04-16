@@ -50,7 +50,7 @@ class client< TCP > {
 
         public:
     //! TCP constructor, client_count is default on 1
-    client( const int port, const std::string ip,)
+    client( const int port, const std::string ip)
         : _port( port ), _ip( ip ) {}
 
     // methods
@@ -73,11 +73,11 @@ class client< TCP > {
             DEBUG_MSG( "Created socket!" );
         }
         // connecting to server
-        inet_pton(AF_INET, _ip, &(_servAddr.sin_addr));
+        inet_pton(AF_INET, _ip.c_str(), &(_servAddr.sin_addr));
         _servAddr.sin_family      = AF_INET;
         _servAddr.sin_port        = htons( _port );
-        if ( connect(_skt, &_serverAddr, sizeof(struct sockaddr_in)) == -1 ) {
-            DEBUG_MSG( "Error binding with error: " << std::strerror(errno) );
+        if ( connect(_skt, (sockaddr *)&_servAddr, sizeof(struct sockaddr_in)) == -1 ) {
+            DEBUG_MSG( "Error binding with error: " << hstrerror(errno) );
             return -1;
         } else {
             DEBUG_MSG( "Binding successful to port " << _port << "!" );

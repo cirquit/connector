@@ -15,8 +15,8 @@
 set(PROJECT_NAME Connector)
 set(CONN_LIB_NAME  connector)
 #set(EXEC_NAME connector_exec)
-set(TEST_NAME_RECEIVER receiver_test)
-set(TEST_NAME_SENDER sender_test)
+set(TEST_NAME_SERVER server_test)
+set(TEST_NAME_CLIENT client_test)
 
 project (${PROJECT_NAME})
 cmake_minimum_required (VERSION 3.5.1)
@@ -44,4 +44,4 @@ endif()
 
 # add the actual code
 add_subdirectory (library)
-# add_subdirectory (tests)
+add_subdirectory (tests)

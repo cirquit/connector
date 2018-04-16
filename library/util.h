@@ -10,9 +10,3 @@
 #else
 #define DEBUG_MSG(msg)
 #endif // DEBUG_MODE (in [package-name]/CMakeLists.txt)
-
-int foo()
-{
-    DEBUG_MSG("Debug was called from here!");
-    return 1;
-}

@@ -16,16 +16,16 @@ int main() {
 
     const int port = 4444;
     const std::string ip = "10.158.73.248";
-    connector::client<connector::TCP> client(port, ip);
+    connector::client<connector::UDP> client(port, ip);
     client.init();
 
     std::string to_server = "PING";
     char buffer[255];
     while(true)
     {   
-        client.send_tcp<const char>(to_server.c_str()[0], 5 * sizeof(char));
+        client.send_udp<const char>(to_server.c_str()[0], 5 * sizeof(char));
 //        std::cout << "CLIENT: Send -  = " << to_server << std::endl;
-        client.receive_tcp<char>(buffer[0], 5 * sizeof(char));
+        client.receive_udp<char>(buffer[0], 5 * sizeof(char));
         std::cout << "CLIENT: Got -  buffer = " << buffer << std::endl;
     }
 

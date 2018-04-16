@@ -24,7 +24,7 @@ void timeit_(std::function<void()> f)
 int main() {
 
     const int port = 4444; 
-    connector::server<connector::TCP> server(port);
+    connector::server<connector::UDP> server(port);
     server.init();
 
     
@@ -33,11 +33,11 @@ int main() {
     while(true)
     {   
         timeit_([&](){
-            server.receive_tcp<char>(buffer[0], 5 * sizeof(char));
+            server.receive_udp<char>(buffer[0], 5 * sizeof(char));
         });
 
         //std::cout << "SERVER: Got from client - buffer = " << buffer << std::endl;
-        server.send_tcp<const char>(to_send.c_str()[0], 5 * sizeof(char));
+        server.send_udp<const char>(to_send.c_str()[0], 5 * sizeof(char));
         
     }
 }

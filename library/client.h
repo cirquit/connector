@@ -48,7 +48,7 @@ class client {};
 template <>
 class client< TCP > {
 
-        public:
+    public:
     //! TCP constructor, client_count is default on 1
     client( const int port, const std::string ip)
         : _port( port ), _ip( ip ) {}
@@ -130,57 +130,87 @@ class client< TCP > {
     std::string _ip;
 };
 
-// template<>
-// class CLIENT<UDP>
-//{
-/**
- * This function initializes the parameters needed for establishing a **UDP** connection with the
- * receiver
- * It takes a port (`int`) and an IP Adress(`std::string`) as Arguments and
- * only needs to be called once
- *
- * Modifying:
- *    * `_cliAddr`
- *    * `_skt`
- *    * `port`
- *    * `ip`
- */
-//    void init_CLIENT_udp(const int port, const std::string ip) {
-//        _skt = socket(AF_INET, SOCK_DGRAM, 0);
-//        _cliAddr.sin_family = AF_INET;
-//        _cliAddr.sin_port = htons(port);
-//        inet_pton(AF_INET, ip.c_str(), &(_cliAddr.sin_addr));
-//    }
-//
-//    /** \brief Main UDP function to send objects
-//     *
-//     * The `object_to_send` should be of the same type and size (`buffer`) as the object on the
-//     [receiving](classconnector_1_1receiver.html) side
-//     */
-//    void send_udp(T * object_to_send, size_t buffer=2048) {
-//
-//        sendto(_skt, object_to_send, buffer, 0, (struct sockaddr *) &_cliAddr,
-//        sizeof(sockaddr_in));
-//    }
-//
-//    // member
-//    private:
-//    /** \brief A container to store client information
-//     *
-//     * Members:
-//     *  * `short` sin_family
-//     *  * `unsigned short` sin_port
-//     *  * `struct` in_addr sin_addr
-//     *  * `char` sin_zero[0]
-//     *
-//     * Needed include: `<netinet/in.h>`
-//     */
-//    struct sockaddr_in _cliAddr;
-//    /** \brief The socket to send data to the client from
-//    */
-//    int _skt{0};
-//    int listen_skt{0};
-//};
+template<>
+class client < UDP >
+{
+    public:
+    /**
+     * This function initializes the parameters needed for establishing a **UDP** connection with the
+     * receiver
+     * It takes a port (`int`) and an IP Adress(`std::string`) as Arguments and
+     * only needs to be called once
+     *
+     * Modifying:
+     *    * `_cliAddr`
+     *    * `_skt`
+     *    * `port`
+     *    * `ip`
+     */
+    client(const int port, const std::string ip)
+    : _port(port), _ip(ip) { }
+
+    void init()
+    {
+        _skt = socket(AF_INET, SOCK_DGRAM, 0);
+        if ( _skt < 0 ) {
+            DEBUG_MSG( "Connection accept failed with error: " << _skt << '\n');
+        } else {
+            DEBUG_MSG( "I connected to " << _ip << ":" << _port << '\n');
+        }
+        _cliAddr.sin_family = AF_INET;
+        _cliAddr.sin_port = htons(_port);
+        inet_pton(AF_INET, _ip.c_str(), &(_cliAddr.sin_addr));
+    }
+
+   /** \brief Main UDP function to send objects
+    *
+    * The `object_to_send` should be of the same type and size (`buffer`) as the object on the
+    [receiving](classconnector_1_1receiver.html) side
+    */
+    template< class U >
+    void send_udp(U & out) const {
+        sendto(_skt, static_cast< const void * >( &out ), sizeof(U), 0, (struct sockaddr *) &_cliAddr, sockaddr_len);
+    }
+
+    //! \todo
+    template< class U >
+    void send_udp(U & out, const size_t buffer) const {
+        sendto(_skt, static_cast< const void * >( &out ), buffer, 0, (struct sockaddr *) &_cliAddr, sockaddr_len);
+    }
+
+    //! \todo
+    template < class U >
+    void receive_udp( U &out ) {
+        recvfrom( _skt, static_cast< void * >( &out ), sizeof( U ), 0, (struct sockaddr *) &_cliAddr, &sockaddr_len);
+    }
+
+    //! \todo
+    template < class U >
+    void receive_udp( U &out, const size_t buffer ) {
+        recvfrom( _skt, static_cast< void * >( &out ), buffer,  0, (struct sockaddr *) &_cliAddr, &sockaddr_len);
+    }
+
+   // member
+   private:
+   /** \brief A container to store client information
+    *
+    * Members:
+    *  * `short` sin_family
+    *  * `unsigned short` sin_port
+    *  * `struct` in_addr sin_addr
+    *  * `char` sin_zero[0]
+    *
+    * Needed include: `<netinet/in.h>`
+    */
+   struct sockaddr_in _cliAddr;
+   /** \brief The socket to send data to the client from
+   */
+   int _skt { 0 };
+   socklen_t sockaddr_len { sizeof(struct sockaddr_in) };
+   int _port;
+   std::string _ip;
+};
 
 }  // namespace connector
+
 #endif  // CLIENT_H

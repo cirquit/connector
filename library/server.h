@@ -105,7 +105,7 @@ class server< TCP > {
     //! \todo
     template < class U >
     void send_tcp( U &out ) const {
-        send( _skt, &out, sizeof( U ), 0 );
+        send( _skt, static_cast< const void * >( &out ), sizeof( U ), 0 );
     }
 
     //! \todo
@@ -155,12 +155,13 @@ class server< TCP > {
 
 template <>
 class server< UDP > {
-        public:
+    
+    public:
     //! UDP constructor
     server( const int port ) : _port( port ) {}
 
     // methods
-        public:
+    public:
     int init( ) {
         // bind socket to local server port
         _ourAddr.sin_family      = AF_INET;
@@ -184,25 +185,33 @@ class server< UDP > {
         } else {
             DEBUG_MSG( "Binding successful to port " << _port << "!" );
         }
-        _len = sizeof( struct sockaddr_in );  // needed to store length of the IP-Adress
         return _skt;
     }
 
-    /** \brief Main UDP function to receive objects
-     *
-     * Modifying:
-     *    * `out`
-     */
+    //! \todo
     template < class U >
     void receive_udp( U &out ) {
-        recvfrom( _skt, &out, sizeof( U ), 0, (struct sockaddr *)&_cliAddr, &_len );
+        recvfrom( _skt, static_cast< void * >( &out ), sizeof( U ), 0, (struct sockaddr *) &_cliAddr, &sockaddr_len);
     }
 
+    //! \todo
     template < class U >
     void receive_udp( U &out, const size_t buffer ) {
-        recvfrom( _skt, static_cast< void * >( &out ), buffer, 0, (struct sockaddr *)&_cliAddr,
-                  &_len );
+        recvfrom( _skt, static_cast< void * >( &out ), buffer,  0, (struct sockaddr *) &_cliAddr, &sockaddr_len);
     }
+
+    //! \todo
+    template< class U >
+    void send_udp(U & out) const {
+        sendto(_skt, static_cast< const void * >( &out ), sizeof(U), 0, (struct sockaddr *) &_cliAddr, sockaddr_len);
+    }
+
+    //! \todo
+    template< class U >
+    void send_udp(U & out, const size_t buffer) const {
+        sendto(_skt, static_cast< const void * >( &out ), buffer, 0, (struct sockaddr *) &_cliAddr, sockaddr_len);
+    }
+
 
     // member
         private:
@@ -233,10 +242,9 @@ class server< UDP > {
     int _skt{0};
     //! Return value of `bind()`
     int _bnd{0};
-    //! Length of IP-Adress
-    unsigned _len{0};
     //! \todo
     int _port;
+    socklen_t sockaddr_len { sizeof(struct sockaddr_in) };
 };
 }  // namespace connector
 #endif  // SERVER_H

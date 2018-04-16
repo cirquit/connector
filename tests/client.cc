@@ -1,17 +1,19 @@
+// Copyright 2018 municHMotorsport e.V. <info@munichmotorsport.de>
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
-// udp/tcp includes
-#include <arpa/inet.h>
-#include <iostream>
-#include <netdb.h>
-#include <netinet/in.h>
-#include <string>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <typeinfo>
-#include <iostream>
+
 #include <unistd.h>
-// #include <string>
-// #include "catch.h"
 
 #include "../library/client.h"
 
@@ -20,8 +22,9 @@ int main() {
 
 
     const int port = 4444;
-    //const std::string ip = "10.158.73.248";
-    const std::string ip = "127.0.0.1";
+//    const std::string ip = "10.158.73.248"; //alex
+//    const std::string ip = "127.0.0.1";
+    const std::string ip = "10.158.76.57";
     connector::client<connector::UDP> client(port, ip);
     client.init();
 

@@ -32,9 +32,6 @@
  */
 namespace connector {
 
-//! \todo
-enum CONNECTOR_TYPE : size_t { TCP = 0, UDP = 1 };
-
 /** \brief A templated server class with one template argument
  *
  * Template argument:

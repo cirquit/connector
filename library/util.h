@@ -1,3 +1,6 @@
+#ifndef UTIL_H
+#define UTIL_H
+
 #include <iostream>
 #include <functional>
 
@@ -10,3 +13,8 @@
 #else
 #define DEBUG_MSG(msg)
 #endif // DEBUG_MODE (in [package-name]/CMakeLists.txt)
+namespace connector {
+
+    enum CONNECTOR_TYPE : size_t { TCP = 0, UDP = 1 };
+}
+#endif  // UTIL_H

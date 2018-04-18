@@ -5,43 +5,43 @@ Connector
 
 ### Build  
 ```bash
-git clone git@gitlab.munichmotorsport.de:Justine/Connector.git 
-mkdir build  
-cd build  
-cmake ..  
-make  
+$ git clone git@gitlab.munichmotorsport.de:Justine/Connector.git 
+$ mkdir build  
+$ cd build  
+$ cmake ..  
+$ make  
 ```  
 
 ### Usage  
-* Sender  
-  * Include `sender.h` in your project  
-  * Send any object (besides `Strings`) like so:  
+* Client/Server 
+  * Include `client.h` and/or `server.h` in your project  
+  * This Example shows a UDP connection, TCP works accordingly  
+  * **Receive** any object like so:  
 
 ```c++
   // Create the object you want to send
   MyObject my_object;
-  unsigned port{4242}; // The port you want to send the data at
-  std::string ip {"127.0.0.1"}; // The IP Adress of your receiver or 127.0.0.1 for localhost
+  int port{4242}; // The port you want to receive the data at
+
   // creation of sender object
-  connector::sender<MyObject> sndr{};
-  sndr.init_sender_udp(port, ip);
-  sndr.send_udp(&my_object);
+  connector::server< connector::UDP > receiver;
+  receiver.init();  
+  receiver.receive_udp< MyObject >( my_object );
+  
 ```
 
-
-* Receiver  
-  * Include `receiver.h` in your project  
-  * Receive any object like so:  
+  * **Send** any object like so:  
 
 ```c++
   // Construct an instance of the object you want to receive
   MyObject my_object;
+  int port{4242}; // The port you want to receive data at
+  std::string ip {"127.0.0.1"}; // The IP Adress of your receiver or 127.0.0.1 for localhost
 
-  unsigned port{4242}; // The port you want to receive data at
   // creation of receiver object
-  connector::receiver<MyObject> rcvr{};
-  int socket = rcvr.init_receiver_udp(port);
-  rcvr.receive_udp(my_object, socket);
+  connector::client< connector::UDP > sender( port, ip );
+  sender.init();
+  sender.send_udp< MyObject >( my_object );
 ```
 
 ### Documentation  
@@ -55,9 +55,11 @@ $ firefox documentation/html/index.html
 
 
 ### Tip  
-The `send_udp()` and `receive_udp()` functions have a default parameter where you can set the size of the buffer:  
+The `send_udp()`, `send_tcp()`, `receive_udp()` and `receive_tcp()` functions are overloaded, so you can set the buffer size yourself (e.g. when doing pointer magic):  
 ```c++
-  void send_udp(T * object_to_send, unsigned buffer=2048) {}
+  void send_udp(U & object_to_send, const size_t buffer) const {}
+  void send_tcp(U & object_to_send, const size_t buffer) const {}
 
-  void receive_udp(T & out, int socket, unsigned buffer=2048) {}
+  void receive_udp(U & object_to_receive, const size_t buffer) {}
+  void receive_tcp(U & object_to_receive, const size_t buffer) const {}
 ```  

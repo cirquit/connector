@@ -161,9 +161,9 @@ class client < UDP >
     {
         _skt = socket(AF_INET, SOCK_DGRAM, 0);
         if ( _skt < 0 ) {
-            DEBUG_MSG( "Connection accept failed with error: " << _skt << '\n');
+            DEBUG_MSG( "Connection accept failed with error: " << _skt);
         } else {
-            DEBUG_MSG( "I connected to " << _ip << ":" << _port << '\n');
+            DEBUG_MSG( "I connected to " << _ip << ":" << _port);
         }
         _cliAddr.sin_family = AF_INET;
         _cliAddr.sin_port = htons(_port);

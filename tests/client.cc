@@ -29,7 +29,7 @@ int main() {
     client.init();
 
     std::string to_server = "PING";
-    char buffer[255];
+//    char buffer[255];
     uint32_t x = 5;
     //uint8_t * x = (uint8_t*)malloc(sizeof(uint8_t) * 10);
     while(true)

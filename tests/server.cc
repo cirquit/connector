@@ -39,7 +39,7 @@ int main() {
 
     
     std::string to_send = "PONG";
-    char buffer[255];  
+//    char buffer[255];  
     uint32_t x;
     while(true)
     {   

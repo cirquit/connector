@@ -24,6 +24,7 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <typeinfo>
+#include <unistd.h>
 
 #include <errno.h>
 #include "util.h"
@@ -51,6 +52,10 @@ class client< TCP > {
     client( const int port, const std::string ip)
         : _port( port ), _ip( ip ) {}
 
+    //! TCP destructor, closing socket
+    ~client(){
+        close(_skt);
+    }
     // methods
         public:
     /**
@@ -146,6 +151,11 @@ class client < UDP >
      */
     client(const int port, const std::string ip)
     : _port(port), _ip(ip) { }
+
+    //! UDP destructor, closing socket
+    ~client(){
+        close(_skt);
+    }
 
     void init()
     {

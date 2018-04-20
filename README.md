@@ -14,7 +14,7 @@ $ make
 
 ### Usage  
 * Client/Server 
-  * Include `client.h` and/or `server.h` in your project  
+  * Include `client.h` and/or `server.h` in your project and `util.h`  
   * This Example shows a UDP connection, TCP works accordingly  
   * **Receive** any object like so:  
 
@@ -24,10 +24,9 @@ $ make
   int port{4242}; // The port you want to receive the data at
 
   // creation of sender object
-  connector::server< connector::UDP > receiver;
+  connector::server< connector::UDP > receiver( port );
   receiver.init();  
   receiver.receive_udp< MyObject >( my_object );
-  
 ```
 
   * **Send** any object like so:  

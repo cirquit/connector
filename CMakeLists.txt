@@ -12,14 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+cmake_minimum_required (VERSION 3.5.1)
+
 set(PROJECT_NAME Connector)
 set(CONN_LIB_NAME  connector)
-#set(EXEC_NAME connector_exec)
 set(TEST_NAME_SERVER server_test)
 set(TEST_NAME_CLIENT client_test)
 
 project (${PROJECT_NAME})
-cmake_minimum_required (VERSION 3.5.1)
+
+# define library version 
+# Note that the library version is set via FORCE. This prevents users changing the value in the CMakeCache.txt
+set(CONNECTOR_VERSION_MAJOR 1 CACHE STRING "major version" FORCE)
+set(CONNECTOR_VERSION_MINOR 0 CACHE STRING "minor version" FORCE)
+set(CONNECTOR_VERSION ${CONNECTOR_VERSION_MAJOR}.${CONNECTOR_VERSION_MINOR} CACHE STRING "version" FORCE)
+
+#set(bin_dest "bin")
+set(include_dest "include/connector-${CONNECTOR_VERSION}")
+set(main_lib_dest "lib/connector-${CONNECTOR_VERSION}")
+
+install(FILES connector-config.cmake DESTINATION ${main_lib_dest})
+# Sets the correct version number which find_package() will look for
+configure_file(connector-config-version.cmake ${CMAKE_CURRENT_BINARY_DIR}/connector-config-version.cmake @ONLY)
+install(FILES connector-config.cmake ${CMAKE_CURRENT_BINARY_DIR}/connector-config-version.cmake DESTINATION ${main_lib_dest})
+install(EXPORT ${CONN_LIB_NAME} DESTINATION "${main_lib_dest}")
 
 ## this flag is used to set the compiler flags and should be used in the code
 ## with #if DEBUG_MODE <code> #else <code> #endif OR the debug print macro

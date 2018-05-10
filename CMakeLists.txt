@@ -21,6 +21,7 @@ set(TEST_NAME_CLIENT client_test)
 
 project (${PROJECT_NAME})
 
+### Installation Properties
 # define library version 
 # Note that the library version is set via FORCE. This prevents users changing the value in the CMakeCache.txt
 set(CONNECTOR_VERSION_MAJOR 1 CACHE STRING "major version" FORCE)
@@ -36,6 +37,7 @@ install(FILES connector-config.cmake DESTINATION ${main_lib_dest})
 configure_file(connector-config-version.cmake ${CMAKE_CURRENT_BINARY_DIR}/connector-config-version.cmake @ONLY)
 install(FILES connector-config.cmake ${CMAKE_CURRENT_BINARY_DIR}/connector-config-version.cmake DESTINATION ${main_lib_dest})
 install(EXPORT ${CONN_LIB_NAME} DESTINATION "${main_lib_dest}")
+### End Installation Properties
 
 ## this flag is used to set the compiler flags and should be used in the code
 ## with #if DEBUG_MODE <code> #else <code> #endif OR the debug print macro

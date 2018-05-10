@@ -70,20 +70,28 @@ class client< TCP > {
         // creating socket
         _skt = socket(AF_INET, SOCK_STREAM, 0);
         if ( _skt == -1 ) {
+#if DEBUG_MODE 
             DEBUG_MSG( "Error creating socket with -1" );
+#endif
             return -1;
         } else {
+#if DEBUG_MODE 
             DEBUG_MSG( "Created socket!" );
+#endif
         }
         // connecting to server
         inet_pton(AF_INET, _ip.c_str(), &(_servAddr.sin_addr));
         _servAddr.sin_family      = AF_INET;
         _servAddr.sin_port        = htons( _port );
         if ( connect(_skt, (sockaddr *)&_servAddr, sizeof(struct sockaddr_in)) == -1 ) {
+#if DEBUG_MODE 
             DEBUG_MSG( "Error binding with error: " << hstrerror(errno) );
+#endif
             return -1;
         } else {
+#if DEBUG_MODE 
             DEBUG_MSG( "Binding successful to port " << _port << "!" );
+#endif
         }
         return _skt;
     }
@@ -161,9 +169,13 @@ class client < UDP >
     {
         _skt = socket(AF_INET, SOCK_DGRAM, 0);
         if ( _skt < 0 ) {
+#if DEBUG_MODE 
             DEBUG_MSG( "Connection accept failed with error: " << _skt);
+#endif
         } else {
+#if DEBUG_MODE 
             DEBUG_MSG( "I connected to " << _ip << ":" << _port);
+#endif
         }
         _cliAddr.sin_family = AF_INET;
         _cliAddr.sin_port = htons(_port);

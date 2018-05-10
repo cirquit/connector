@@ -58,10 +58,14 @@ class server< TCP > {
         // creating socket
         _listen_socket = socket( AF_INET, SOCK_STREAM, 0 );
         if ( _listen_socket == -1 ) {
+#if DEBUG_MODE 
             DEBUG_MSG( "Error creating socket with -1" );
+#endif
             return -1;
         } else {
+#if DEBUG_MODE 
             DEBUG_MSG( "Created socket!" );
+#endif
         }
 
         // binding port
@@ -70,10 +74,14 @@ class server< TCP > {
         _ourAddr.sin_port        = htons( _port );
         _bnd = bind( _listen_socket, (struct sockaddr *)&_ourAddr, sizeof( _ourAddr ) );
         if ( _bnd < 0 ) {
+#if DEBUG_MODE 
             DEBUG_MSG( "Error binding with error: " << _bnd );
+#endif
             return -1;
         } else {
+#if DEBUG_MODE 
             DEBUG_MSG( "Binding successful to port " << _port << "!" );
+#endif
         }
 
         // waiting for _skt clients to connect (blocking)
@@ -81,12 +89,16 @@ class server< TCP > {
         _len = sizeof( struct sockaddr_in );
         _skt = accept( _listen_socket, (struct sockaddr *)&_cliAddr, (socklen_t *)&_len );
         if ( _skt < 0 ) {
+#if DEBUG_MODE 
             DEBUG_MSG( "Connection accept failed with error: " << _skt );
+#endif
             return -1;
         } else {
+#if DEBUG_MODE 
             DEBUG_MSG( "All clients ("
                        << "1"
                        << ") connected!" );
+#endif
         }
         return _skt;
     }
@@ -175,19 +187,27 @@ class server< UDP > {
         // create a UDP socket
         _skt = socket( AF_INET, SOCK_DGRAM, 0 );
         if ( _skt < 0 ) {
+#if DEBUG_MODE 
             DEBUG_MSG( "Connection accept failed with error: " << _skt );
+#endif
             return -1;
         } else {
+#if DEBUG_MODE 
             DEBUG_MSG( "Some clients connected!" );
+#endif
         }
 
         // binding socket
         _bnd = bind( _skt, (struct sockaddr *)&_ourAddr, sizeof( struct sockaddr_in ) );
         if ( _bnd < 0 ) {
+#if DEBUG_MODE 
             DEBUG_MSG( "Error binding with error: " << _bnd );
+#endif
             return -1;
         } else {
+#if DEBUG_MODE 
             DEBUG_MSG( "Binding successful to port " << _port << "!" );
+#endif
         }
         return _skt;
     }

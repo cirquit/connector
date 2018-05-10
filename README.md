@@ -5,20 +5,34 @@ Connector
 
 ### Build  
 ```bash
-$ git clone git@gitlab.munichmotorsport.de:Justine/Connector.git 
+$ git clone git@gitlab.munichmotorsport.de:FSD/Connector.git 
 $ mkdir build  
 $ cd build  
 $ cmake ..  
 $ make  
+$ sudo make install  
 ```  
 
 ### Usage  
-* Client/Server 
-  * Include `client.h` and/or `server.h` in your project and `util.h`  
-  * This Example shows a UDP connection, TCP works accordingly  
-  * **Receive** any object like so:  
+#### In your root `CMakelists.txt` 
+* Add this line:
+    ```cmake
+        find_package(connector 1.0 REQUIRED)
+    ```
+
+#### In your subdirectory, which has the file that needs connector
+* Add this in your sudirectory `CMakeLists.txt` to **link** connector:
+    ```cmake
+        target_link_libraries(${your-awesome-file} ${your-awesome-library} connector )
+    ```
+
+#### Finally in your file include connector like this:
+* Include `client.h` and/or `server.h`  
+* This Example shows a UDP connection, TCP works accordingly  
+* **Receive** any object like so:  
 
 ```c++
+  #include <connector-1.0/server.h>
   // Create the object you want to send
   MyObject my_object;
   int port{4242}; // The port you want to receive the data at
@@ -32,6 +46,7 @@ $ make
   * **Send** any object like so:  
 
 ```c++
+  #include <connector-1.0/client.h>
   // Construct an instance of the object you want to receive
   MyObject my_object;
   int port{4242}; // The port you want to receive data at

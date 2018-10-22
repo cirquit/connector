@@ -20,9 +20,9 @@ set(SOURCES_CLIENT client.cc)
 
 
 add_executable(${TEST_NAME_SERVER} ${SOURCES_SERVER})
-target_link_libraries(${TEST_NAME_SERVER} ${CONN_LIB_NAME})
+target_link_libraries(${TEST_NAME_SERVER} ${CPP_LIB_NAME})
 
 add_executable(${TEST_NAME_CLIENT} ${SOURCES_CLIENT})
-target_link_libraries(${TEST_NAME_CLIENT} ${CONN_LIB_NAME})
+target_link_libraries(${TEST_NAME_CLIENT} ${CPP_LIB_NAME})
 
 

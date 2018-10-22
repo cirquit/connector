@@ -26,6 +26,8 @@
 #include <unistd.h>
 
 #include "util.h"
+#include "autogen-CONNECTOR-macros.h"
+
 
 /** \brief connector namespace, which is the wrapper fo the connector library
  *
@@ -58,14 +60,10 @@ class server< TCP > {
         // creating socket
         _listen_socket = socket( AF_INET, SOCK_STREAM, 0 );
         if ( _listen_socket == -1 ) {
-#if DEBUG_MODE 
-            DEBUG_MSG( "Error creating socket with -1" );
-#endif
+            DEBUG_CRIT_MSG_CONNECTOR( "Error creating socket with -1\n" );
             return -1;
         } else {
-#if DEBUG_MODE 
-            DEBUG_MSG( "Created socket!" );
-#endif
+            DEBUG_MSG_CONNECTOR( "Created socket!\n" );
         }
 
         // binding port
@@ -74,14 +72,10 @@ class server< TCP > {
         _ourAddr.sin_port        = htons( _port );
         _bnd = bind( _listen_socket, (struct sockaddr *)&_ourAddr, sizeof( _ourAddr ) );
         if ( _bnd < 0 ) {
-#if DEBUG_MODE 
-            DEBUG_MSG( "Error binding with error: " << _bnd );
-#endif
+            DEBUG_CRIT_MSG_CONNECTOR( "Error binding with error: " << _bnd << '\n' );
             return -1;
         } else {
-#if DEBUG_MODE 
-            DEBUG_MSG( "Binding successful to port " << _port << "!" );
-#endif
+            DEBUG_MSG_CONNECTOR( "Binding successful to port " << _port << "!\n" );
         }
 
         // waiting for _skt clients to connect (blocking)
@@ -89,16 +83,12 @@ class server< TCP > {
         _len = sizeof( struct sockaddr_in );
         _skt = accept( _listen_socket, (struct sockaddr *)&_cliAddr, (socklen_t *)&_len );
         if ( _skt < 0 ) {
-#if DEBUG_MODE 
-            DEBUG_MSG( "Connection accept failed with error: " << _skt );
-#endif
+            DEBUG_CRIT_MSG_CONNECTOR( "Connection accept failed with error: " << _skt << '\n');
             return -1;
         } else {
-#if DEBUG_MODE 
-            DEBUG_MSG( "All clients ("
-                       << "1"
-                       << ") connected!" );
-#endif
+            DEBUG_MSG_CONNECTOR( "All clients ("
+                                << "1"
+                                << ") connected!\n" );
         }
         return _skt;
     }
@@ -187,27 +177,19 @@ class server< UDP > {
         // create a UDP socket
         _skt = socket( AF_INET, SOCK_DGRAM, 0 );
         if ( _skt < 0 ) {
-#if DEBUG_MODE 
-            DEBUG_MSG( "Connection accept failed with error: " << _skt );
-#endif
+            DEBUG_CRIT_MSG_CONNECTOR( "Connection accept failed with error: " << _skt << '\n');
             return -1;
         } else {
-#if DEBUG_MODE 
-            DEBUG_MSG( "Some clients connected!" );
-#endif
+            DEBUG_MSG_CONNECTOR( "Some clients connected!" );
         }
 
         // binding socket
         _bnd = bind( _skt, (struct sockaddr *)&_ourAddr, sizeof( struct sockaddr_in ) );
         if ( _bnd < 0 ) {
-#if DEBUG_MODE 
-            DEBUG_MSG( "Error binding with error: " << _bnd );
-#endif
+            DEBUG_CRIT_MSG_CONNECTOR( "Error binding with error: " << _bnd << '\n');
             return -1;
         } else {
-#if DEBUG_MODE 
-            DEBUG_MSG( "Binding successful to port " << _port << "!" );
-#endif
+            DEBUG_MSG_CONNECTOR( "Binding successful to port " << _port << "!\n" );
         }
         return _skt;
     }

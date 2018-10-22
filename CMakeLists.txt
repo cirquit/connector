@@ -117,7 +117,7 @@ elseif( DEBUG_LEVEL_${UNIQUE_DEBUG_ID} STREQUAL "1" )
 \    //! logging based on the DEBUG_LEVEL_${UNIQUE_DEBUG_ID} defined while building with cmake (only active with DEBUG_LEVEL_${UNIQUE_DEBUG_ID}=2)
 \    #define DEBUG_MSG_${UNIQUE_DEBUG_ID}(msg)
 \    //! logging based on the DEBUG_LEVEL_${UNIQUE_DEBUG_ID} defined while building with cmake (active with DEBUG_LEVEL_${UNIQUE_DEBUG_ID}=1 and 2)
-\    #define DEBUG_CRIT_MSG_CT(msg) std::cerr << \"[CT INFO - \" \\
+\    #define DEBUG_CRIT_MSG_CT(msg) std::cerr << \"[${UNIQUE_DEBUG_ID} - \" \\
 \                        << __FILENAME__ << ':' \\
 \                        << __LINE__ << ':'     \\
 \                        << __func__ << \"()]: \"    \\
@@ -137,7 +137,7 @@ elseif( DEBUG_LEVEL_${UNIQUE_DEBUG_ID} STREQUAL "2" )
 
 \    #include <iostream>
 \    //! logging based on the DEBUG_LEVEL_${UNIQUE_DEBUG_ID} defined while building with cmake (only active with DEBUG_LEVEL=2)
-\    #define DEBUG_MSG_${UNIQUE_DEBUG_ID}(msg) std::cerr << \"[CT INFO - \" \\
+\    #define DEBUG_MSG_${UNIQUE_DEBUG_ID}(msg) std::cerr << \"[${UNIQUE_DEBUG_ID} - \" \\
 \                        << __FILENAME__ << ':' \\
 \                        << __LINE__ << ':'     \\
 \                        << __func__ << \"()]: \"    \\

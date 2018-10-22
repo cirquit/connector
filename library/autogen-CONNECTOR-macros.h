@@ -7,7 +7,7 @@
 
     #include <iostream>
     //! logging based on the DEBUG_LEVEL_CONNECTOR defined while building with cmake (only active with DEBUG_LEVEL=2)
-    #define DEBUG_MSG_CONNECTOR(msg) std::cerr << "[CT INFO - " \
+    #define DEBUG_MSG_CONNECTOR(msg) std::cerr << "[CONNECTOR INFO - " \
                         << __FILENAME__ << ':' \
                         << __LINE__ << ':'     \
                         << __func__ << "()]: "    \

@@ -74,7 +74,7 @@ class client< TCP > {
             DEBUG_CRIT_MSG_CONNECTOR( "Error creating socket with -1" << '\n' );
             return -1;
         } else {
-            DEBUG_MSG_CONNECTOR( "Created socket!" );
+            DEBUG_MSG_CONNECTOR( "Created socket!\n" );
         }
         // connecting to server
         inet_pton(AF_INET, _ip.c_str(), &(_servAddr.sin_addr));

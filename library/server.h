@@ -180,7 +180,7 @@ class server< UDP > {
             DEBUG_CRIT_MSG_CONNECTOR( "Connection accept failed with error: " << _skt << '\n');
             return -1;
         } else {
-            DEBUG_MSG_CONNECTOR( "Some clients connected!" );
+            DEBUG_MSG_CONNECTOR( "Some clients connected!\n" );
         }
 
         // binding socket

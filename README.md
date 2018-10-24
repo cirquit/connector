@@ -34,9 +34,9 @@ Example usage can be found in [tests](tests) directory. This is a very simple [P
 ```c++
 #include <thread> // std::this_thread::sleep_for
 
-#include "../library/server.h"
-#include "../library/client.h"
-#include "../library/autogen-CONNECTOR-macros.h"
+#include <connector-1.0/server.h>
+#include <connector-1.0/client.h>
+#include <connector-1.0/autogen-CONNECTOR-macros.h>
 
 int main()
 {

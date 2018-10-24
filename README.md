@@ -1,72 +1,80 @@
-
 Connector
 =========
 
+A simple C++ wrapper around the TCP and UDP send/receive functionality in C. 
 
-### Build  
+Written and developed by Justine Probst [[github](https://github.com/jusnelda)] and Alexander Isenko [[github](https://github.com/cirquit)] in the Formula Student Season 2018 for the [municHMotorsport](https://www.munichmotorsport.de/) club. 
+
+If you see this on github - this is only a mirror of our internal repository, made public to allow recruits to easily clone it if they don't have any access yet. 
+
+### Build
 ```bash
 $ git clone git@gitlab.munichmotorsport.de:FSD/Connector.git 
 $ mkdir build  
 $ cd build  
 $ cmake ..  
 $ make  
-$ sudo make install  
+$ sudo make install
 ```  
 
-### Usage  
-#### In your root `CMakelists.txt` 
-* Add this line:
-    ```cmake
-        find_package(connector 1.0 REQUIRED)
-    ```
+### Usage
 
-#### In your subdirectory, which has the file that needs connector
-* Add this in your sudirectory `CMakeLists.txt` to **link** connector:
-    ```cmake
-        target_link_libraries(${your-awesome-file} ${your-awesome-library} connector )
-    ```
-
-#### Finally in your file include connector like this:
-* Include `client.h` and/or `server.h`  
-* This Example shows a UDP connection, TCP works accordingly  
-* **Receive** any object like so:  
-
-```c++
-  #include <connector-1.0/server.h>
-  // Create the object you want to send
-  MyObject my_object;
-  int port{4242}; // The port you want to receive the data at
-
-  // creation of sender object
-  connector::server< connector::UDP > receiver( port );
-  receiver.init();  
-  receiver.receive_udp< MyObject >( my_object );
+If you want to use this library after the global installation add this line to your root `CMakeLists.txt` file:
+```cmake
+    find_package(connector 1.0 REQUIRED)
 ```
 
-  * **Send** any object like so:  
+If you link against this library, add `connector` to `target_link_libraries`, e.g:
+```cmake
+    target_link_libraries(${your-awesome-file} ${your-awesome-library} connector )
+```
+
+Example usage can be found in [tests](tests) directory. This is a very simple [PING](tests/pinger.cc) / [PONG](tests/ponger.cc) server/client example:
 
 ```c++
-  #include <connector-1.0/client.h>
-  // Construct an instance of the object you want to receive
-  MyObject my_object;
-  int port{4242}; // The port you want to receive data at
-  std::string ip {"127.0.0.1"}; // The IP Adress of your receiver or 127.0.0.1 for localhost
+#include <thread> // std::this_thread::sleep_for
 
-  // creation of receiver object
-  connector::client< connector::UDP > sender( port, ip );
-  sender.init();
-  sender.send_udp< MyObject >( my_object );
+#include "../library/server.h"
+#include "../library/client.h"
+#include "../library/autogen-CONNECTOR-macros.h"
+
+int main()
+{
+    using namespace std::chrono_literals;
+    const int receive_port = 4444;
+    const int send_port    = 4445;
+    const std::string ip ( "127.0.0.1" );
+    connector::server< connector::UDP > receiver( receive_port );
+    connector::client< connector::UDP > sender( send_port, ip );
+    sender.init();
+    receiver.init();
+
+    uint32_t ping = 1;
+    uint32_t pong = 2;
+    uint32_t received = 0;
+
+    // initial pong
+    sender.send_udp< uint32_t >( ping );
+
+    while( true )
+    {
+        receiver.receive_udp< uint32_t >( received );
+        std::this_thread::sleep_for(200ms);
+        if ( received == pong )
+        {
+            DEBUG_MSG_CONNECTOR(" Got PONG -> Sending PING\n");
+            sender.send_udp< uint32_t >( ping );
+        }
+    }
+}
 ```
 
 ### Documentation  
 Created with [doxygen](https://www.stack.nl/~dimitri/doxygen/ "Doxygen Website") (with Markdown support)  
-  * [HTML](documentation/html/index.html)  
-Ubuntu:  
+  * [HTML](documentation/html/index.html)
+  * To generate it by yourselves - `doxygen doxygen.config` in the source directory
 
-```bash
-$ firefox documentation/html/index.html
 ```
-
 
 ### Tip  
 The `send_udp()`, `send_tcp()`, `receive_udp()` and `receive_tcp()` functions are overloaded, so you can set the buffer size yourself (e.g. when doing pointer magic):  

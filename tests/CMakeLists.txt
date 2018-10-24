@@ -15,14 +15,30 @@
 # set(SOURCES_SERVER catch.h main.cc server_tests.cc)
 # set(SOURCES_CLIENT catch.h main.cc client_tests.cc)
 
-set(SOURCES_SERVER server.cc)
-set(SOURCES_CLIENT client.cc)
+set(SOURCES_SERVER_UDP server_udp.cc shared_structure.h)
+set(SOURCES_CLIENT_UDP client_udp.cc shared_structure.h)
 
+set(SOURCES_SERVER_TCP server_tcp.cc shared_structure.h)
+set(SOURCES_CLIENT_TCP client_tcp.cc shared_structure.h)
 
-add_executable(${TEST_NAME_SERVER} ${SOURCES_SERVER})
-target_link_libraries(${TEST_NAME_SERVER} ${CPP_LIB_NAME})
+set(SOURCES_PONGER ponger.cc)
+set(SOURCES_PINGER pinger.cc)
 
-add_executable(${TEST_NAME_CLIENT} ${SOURCES_CLIENT})
-target_link_libraries(${TEST_NAME_CLIENT} ${CPP_LIB_NAME})
+add_executable(${TEST_NAME_SERVER_UDP} ${SOURCES_SERVER_UDP})
+target_link_libraries(${TEST_NAME_SERVER_UDP} ${CPP_LIB_NAME})
 
+add_executable(${TEST_NAME_CLIENT_UDP} ${SOURCES_CLIENT_UDP})
+target_link_libraries(${TEST_NAME_CLIENT_UDP} ${CPP_LIB_NAME})
+
+add_executable(${TEST_NAME_SERVER_TCP} ${SOURCES_SERVER_TCP})
+target_link_libraries(${TEST_NAME_SERVER_TCP} ${CPP_LIB_NAME})
+
+add_executable(${TEST_NAME_CLIENT_TCP} ${SOURCES_CLIENT_TCP})
+target_link_libraries(${TEST_NAME_CLIENT_TCP} ${CPP_LIB_NAME})
+
+add_executable(${TEST_NAME_PONGER} ${SOURCES_PONGER})
+target_link_libraries(${TEST_NAME_PONGER} ${CPP_LIB_NAME})
+
+add_executable(${TEST_NAME_PINGER} ${SOURCES_PINGER})
+target_link_libraries(${TEST_NAME_PINGER} ${CPP_LIB_NAME})
 

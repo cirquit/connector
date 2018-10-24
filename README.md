@@ -74,9 +74,7 @@ Created with [doxygen](https://www.stack.nl/~dimitri/doxygen/ "Doxygen Website")
   * [HTML](documentation/html/index.html)
   * To generate it by yourselves - `doxygen doxygen.config` in the source directory
 
-```
-
-### Tip  
+### Tip
 The `send_udp()`, `send_tcp()`, `receive_udp()` and `receive_tcp()` functions are overloaded, so you can set the buffer size yourself (e.g. when doing pointer magic):  
 ```c++
   void send_udp(U & object_to_send, const size_t buffer) const {}

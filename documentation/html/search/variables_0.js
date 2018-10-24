@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['_5fbnd',['_bnd',['../classconnector_1_1receiver.html#a89bee1b4f796e5a1e5fed354e4574430',1,'connector::receiver']]],
-  ['_5fcliaddr',['_cliAddr',['../classconnector_1_1receiver.html#a3135a18b561119ff8faeeb05ad918393',1,'connector::receiver::_cliAddr()'],['../classconnector_1_1sender.html#a340dd695c5b8606e2a94c0fa9dbe8e0b',1,'connector::sender::_cliAddr()']]],
-  ['_5flen',['_len',['../classconnector_1_1receiver.html#afc3cc2fa404084c755d75e8017fa97bd',1,'connector::receiver']]],
-  ['_5fservaddr',['_servAddr',['../classconnector_1_1receiver.html#a60b325418fa641caf8a707b02f844dab',1,'connector::receiver']]],
-  ['_5fskt',['_skt',['../classconnector_1_1receiver.html#a93d94040afe6ee73dc0c2db54d61e627',1,'connector::receiver::_skt()'],['../classconnector_1_1sender.html#ae911e30ba70379091f3a995b3e56c81e',1,'connector::sender::_skt()']]]
+  ['_5fbnd',['_bnd',['../classconnector_1_1server_3_01TCP_01_4.html#a95d55e03f6e459d70e44730ea4e41c39',1,'connector::server&lt; TCP &gt;::_bnd()'],['../classconnector_1_1server_3_01UDP_01_4.html#a29359e63191d7400209dde06f860296e',1,'connector::server&lt; UDP &gt;::_bnd()']]],
+  ['_5fcliaddr',['_cliAddr',['../classconnector_1_1client_3_01UDP_01_4.html#ad60a6d56e9adfe9017aeb007f0274af3',1,'connector::client&lt; UDP &gt;::_cliAddr()'],['../classconnector_1_1server_3_01TCP_01_4.html#ad7dec6f05836574233c7db145fbd4efc',1,'connector::server&lt; TCP &gt;::_cliAddr()'],['../classconnector_1_1server_3_01UDP_01_4.html#af1b055359697a46b5a82772b5ce1e092',1,'connector::server&lt; UDP &gt;::_cliAddr()']]],
+  ['_5flen',['_len',['../classconnector_1_1server_3_01TCP_01_4.html#ad8bc67e50d0373e21ef8e863b3db1771',1,'connector::server&lt; TCP &gt;']]],
+  ['_5fouraddr',['_ourAddr',['../classconnector_1_1server_3_01TCP_01_4.html#aa75f95157f5a38c9ba65625b0ee7bddc',1,'connector::server&lt; TCP &gt;::_ourAddr()'],['../classconnector_1_1server_3_01UDP_01_4.html#a6325152e359abd6a6f8973b6235e566c',1,'connector::server&lt; UDP &gt;::_ourAddr()']]],
+  ['_5fport',['_port',['../classconnector_1_1server_3_01TCP_01_4.html#a0131d121d7342e0020a6c8839f0ed510',1,'connector::server&lt; TCP &gt;::_port()'],['../classconnector_1_1server_3_01UDP_01_4.html#abea57798d63efe457207a47b16001599',1,'connector::server&lt; UDP &gt;::_port()']]],
+  ['_5fservaddr',['_servAddr',['../classconnector_1_1client_3_01TCP_01_4.html#af68017a9141be44f9722c6958c6424fc',1,'connector::client&lt; TCP &gt;']]],
+  ['_5fskt',['_skt',['../classconnector_1_1client_3_01TCP_01_4.html#a7dfa650dcfcd1a0a313404133c71ecbc',1,'connector::client&lt; TCP &gt;::_skt()'],['../classconnector_1_1client_3_01UDP_01_4.html#a9226ef6192c936cfce7d9979e4c6de7c',1,'connector::client&lt; UDP &gt;::_skt()'],['../classconnector_1_1server_3_01TCP_01_4.html#aadd778d867c8a14a17fd68bad02e9835',1,'connector::server&lt; TCP &gt;::_skt()'],['../classconnector_1_1server_3_01UDP_01_4.html#a59ccdadb16911d74c1922e5ee7714fab',1,'connector::server&lt; UDP &gt;::_skt()']]]
 ];

@@ -1,10 +1,11 @@
 var indexSectionsWithContent =
 {
-  0: "_cirs",
-  1: "rs",
+  0: "_cirst~",
+  1: "cs",
   2: "c",
-  3: "irs",
-  4: "_"
+  3: "cirs~",
+  4: "_",
+  5: "t"
 };
 
 var indexSectionNames =
@@ -13,7 +14,8 @@ var indexSectionNames =
   1: "classes",
   2: "namespaces",
   3: "functions",
-  4: "variables"
+  4: "variables",
+  5: "pages"
 };
 
 var indexSectionLabels =
@@ -22,6 +24,7 @@ var indexSectionLabels =
   1: "Classes",
   2: "Namespaces",
   3: "Functions",
-  4: "Variables"
+  4: "Variables",
+  5: "Pages"
 };
 

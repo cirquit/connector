@@ -1,0 +1,122 @@
+\hypertarget{classconnector_1_1client_3_01UDP_01_4}{}\section{connector\+:\+:client$<$ U\+DP $>$ Class Template Reference}
+\label{classconnector_1_1client_3_01UDP_01_4}\index{connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classconnector_1_1client_3_01UDP_01_4_ac0fe47fc2a027af240d0d812c0bfc386}{client} (const int port, const std\+::string ip)
+\item 
+\mbox{\Hypertarget{classconnector_1_1client_3_01UDP_01_4_a1f974f60f36277f83ee8afb7a0ed5886}\label{classconnector_1_1client_3_01UDP_01_4_a1f974f60f36277f83ee8afb7a0ed5886}} 
+\hyperlink{classconnector_1_1client_3_01UDP_01_4_a1f974f60f36277f83ee8afb7a0ed5886}{$\sim$client} ()
+\begin{DoxyCompactList}\small\item\em U\+DP destructor, closing socket. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classconnector_1_1client_3_01UDP_01_4_ae6b9cac480e39fe7b9f4350f98e4d043}\label{classconnector_1_1client_3_01UDP_01_4_ae6b9cac480e39fe7b9f4350f98e4d043}} 
+void {\bfseries init} ()
+\item 
+{\footnotesize template$<$class U $>$ }\\void \hyperlink{classconnector_1_1client_3_01UDP_01_4_abc0b3c6c80093a92137fbd27a604d658}{send\+\_\+udp} (U \&out) const
+\begin{DoxyCompactList}\small\item\em Main U\+DP function to send objects. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class U $>$ }\\void \hyperlink{classconnector_1_1client_3_01UDP_01_4_adab4762b60763433e487ffe8296e3280}{send\+\_\+udp} (U \&out, const size\+\_\+t buffer) const
+\item 
+{\footnotesize template$<$class U $>$ }\\void \hyperlink{classconnector_1_1client_3_01UDP_01_4_ae6904da6d74dd64ba63fd0a14445bd01}{receive\+\_\+udp} (U \&out)
+\item 
+{\footnotesize template$<$class U $>$ }\\void \hyperlink{classconnector_1_1client_3_01UDP_01_4_a4e9796bdc80d16af8b52aa2e7ab991d3}{receive\+\_\+udp} (U \&out, const size\+\_\+t buffer)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct sockaddr\+\_\+in \hyperlink{classconnector_1_1client_3_01UDP_01_4_ad60a6d56e9adfe9017aeb007f0274af3}{\+\_\+cli\+Addr}
+\begin{DoxyCompactList}\small\item\em A container to store client information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classconnector_1_1client_3_01UDP_01_4_a9226ef6192c936cfce7d9979e4c6de7c}\label{classconnector_1_1client_3_01UDP_01_4_a9226ef6192c936cfce7d9979e4c6de7c}} 
+int \hyperlink{classconnector_1_1client_3_01UDP_01_4_a9226ef6192c936cfce7d9979e4c6de7c}{\+\_\+skt} \{ 0 \}
+\begin{DoxyCompactList}\small\item\em The socket to send data to the client from. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classconnector_1_1client_3_01UDP_01_4_a2a71f10d88592e8dc3bcff0f916e17e3}\label{classconnector_1_1client_3_01UDP_01_4_a2a71f10d88592e8dc3bcff0f916e17e3}} 
+socklen\+\_\+t {\bfseries sockaddr\+\_\+len} \{ sizeof(struct sockaddr\+\_\+in) \}
+\item 
+\mbox{\Hypertarget{classconnector_1_1client_3_01UDP_01_4_a533a6fdf332df1e9084a1a8c8e87d8e6}\label{classconnector_1_1client_3_01UDP_01_4_a533a6fdf332df1e9084a1a8c8e87d8e6}} 
+int {\bfseries \+\_\+port}
+\item 
+\mbox{\Hypertarget{classconnector_1_1client_3_01UDP_01_4_af7d032e8ad04f9e365f94d256b85c91e}\label{classconnector_1_1client_3_01UDP_01_4_af7d032e8ad04f9e365f94d256b85c91e}} 
+std\+::string {\bfseries \+\_\+ip}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classconnector_1_1client_3_01UDP_01_4_ac0fe47fc2a027af240d0d812c0bfc386}\label{classconnector_1_1client_3_01UDP_01_4_ac0fe47fc2a027af240d0d812c0bfc386}} 
+\index{connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}!client@{client}}
+\index{client@{client}!connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}}
+\subsubsection{\texorpdfstring{client()}{client()}}
+{\footnotesize\ttfamily \hyperlink{classconnector_1_1client}{connector\+::client}$<$ U\+DP $>$\+::\hyperlink{classconnector_1_1client}{client} (\begin{DoxyParamCaption}\item[{const int}]{port,  }\item[{const std\+::string}]{ip }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This function initializes the parameters needed for establishing a {\bfseries U\+DP} connection with the receiver It takes a port ({\ttfamily int}) and an IP Adress({\ttfamily std\+::string}) as Arguments and only needs to be called once
+
+Modifying\+:
+\begin{DoxyItemize}
+\item {\ttfamily \+\_\+cli\+Addr}
+\item {\ttfamily \+\_\+skt}
+\item {\ttfamily port}
+\item {\ttfamily ip} 
+\end{DoxyItemize}
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classconnector_1_1client_3_01UDP_01_4_ae6904da6d74dd64ba63fd0a14445bd01}\label{classconnector_1_1client_3_01UDP_01_4_ae6904da6d74dd64ba63fd0a14445bd01}} 
+\index{connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}!receive\+\_\+udp@{receive\+\_\+udp}}
+\index{receive\+\_\+udp@{receive\+\_\+udp}!connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}}
+\subsubsection{\texorpdfstring{receive\+\_\+udp()}{receive\_udp()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class U $>$ \\
+void \hyperlink{classconnector_1_1client}{connector\+::client}$<$ U\+DP $>$\+::receive\+\_\+udp (\begin{DoxyParamCaption}\item[{U \&}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000007}{Todo}]\end{DoxyRefDesc}
+\mbox{\Hypertarget{classconnector_1_1client_3_01UDP_01_4_a4e9796bdc80d16af8b52aa2e7ab991d3}\label{classconnector_1_1client_3_01UDP_01_4_a4e9796bdc80d16af8b52aa2e7ab991d3}} 
+\index{connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}!receive\+\_\+udp@{receive\+\_\+udp}}
+\index{receive\+\_\+udp@{receive\+\_\+udp}!connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}}
+\subsubsection{\texorpdfstring{receive\+\_\+udp()}{receive\_udp()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class U $>$ \\
+void \hyperlink{classconnector_1_1client}{connector\+::client}$<$ U\+DP $>$\+::receive\+\_\+udp (\begin{DoxyParamCaption}\item[{U \&}]{out,  }\item[{const size\+\_\+t}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000008}{Todo}]\end{DoxyRefDesc}
+\mbox{\Hypertarget{classconnector_1_1client_3_01UDP_01_4_abc0b3c6c80093a92137fbd27a604d658}\label{classconnector_1_1client_3_01UDP_01_4_abc0b3c6c80093a92137fbd27a604d658}} 
+\index{connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}!send\+\_\+udp@{send\+\_\+udp}}
+\index{send\+\_\+udp@{send\+\_\+udp}!connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}}
+\subsubsection{\texorpdfstring{send\+\_\+udp()}{send\_udp()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class U $>$ \\
+void \hyperlink{classconnector_1_1client}{connector\+::client}$<$ U\+DP $>$\+::send\+\_\+udp (\begin{DoxyParamCaption}\item[{U \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Main U\+DP function to send objects. 
+
+The {\ttfamily object\+\_\+to\+\_\+send} should be of the same type and size ({\ttfamily buffer}) as the object on the \href{classconnector_1_1receiver.html}{\tt receiving} side \mbox{\Hypertarget{classconnector_1_1client_3_01UDP_01_4_adab4762b60763433e487ffe8296e3280}\label{classconnector_1_1client_3_01UDP_01_4_adab4762b60763433e487ffe8296e3280}} 
+\index{connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}!send\+\_\+udp@{send\+\_\+udp}}
+\index{send\+\_\+udp@{send\+\_\+udp}!connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}}
+\subsubsection{\texorpdfstring{send\+\_\+udp()}{send\_udp()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class U $>$ \\
+void \hyperlink{classconnector_1_1client}{connector\+::client}$<$ U\+DP $>$\+::send\+\_\+udp (\begin{DoxyParamCaption}\item[{U \&}]{out,  }\item[{const size\+\_\+t}]{buffer }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000006}{Todo}]\end{DoxyRefDesc}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classconnector_1_1client_3_01UDP_01_4_ad60a6d56e9adfe9017aeb007f0274af3}\label{classconnector_1_1client_3_01UDP_01_4_ad60a6d56e9adfe9017aeb007f0274af3}} 
+\index{connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}!\+\_\+cli\+Addr@{\+\_\+cli\+Addr}}
+\index{\+\_\+cli\+Addr@{\+\_\+cli\+Addr}!connector\+::client$<$ U\+D\+P $>$@{connector\+::client$<$ U\+D\+P $>$}}
+\subsubsection{\texorpdfstring{\+\_\+cli\+Addr}{\_cliAddr}}
+{\footnotesize\ttfamily struct sockaddr\+\_\+in \hyperlink{classconnector_1_1client}{connector\+::client}$<$ U\+DP $>$\+::\+\_\+cli\+Addr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A container to store client information. 
+
+Members\+:
+\begin{DoxyItemize}
+\item {\ttfamily short} sin\+\_\+family
+\item {\ttfamily unsigned short} sin\+\_\+port
+\item {\ttfamily struct} in\+\_\+addr sin\+\_\+addr
+\item {\ttfamily char} sin\+\_\+zero\mbox{[}0\mbox{]}
+\end{DoxyItemize}
+
+Needed include\+: {\ttfamily $<$netinet/in.\+h$>$} 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+library/client.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,114 @@
+\hypertarget{classconnector_1_1client_3_01TCP_01_4}{}\section{connector\+:\+:client$<$ T\+CP $>$ Class Template Reference}
+\label{classconnector_1_1client_3_01TCP_01_4}\index{connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classconnector_1_1client_3_01TCP_01_4_a7fdbdadfd0754818712f5d3329a17b0d}\label{classconnector_1_1client_3_01TCP_01_4_a7fdbdadfd0754818712f5d3329a17b0d}} 
+\hyperlink{classconnector_1_1client_3_01TCP_01_4_a7fdbdadfd0754818712f5d3329a17b0d}{client} (const int port, const std\+::string ip)
+\begin{DoxyCompactList}\small\item\em T\+CP constructor, client\+\_\+count is default on 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classconnector_1_1client_3_01TCP_01_4_a8ff3e6f6cf840fa0160565c7880e6ef8}\label{classconnector_1_1client_3_01TCP_01_4_a8ff3e6f6cf840fa0160565c7880e6ef8}} 
+\hyperlink{classconnector_1_1client_3_01TCP_01_4_a8ff3e6f6cf840fa0160565c7880e6ef8}{$\sim$client} ()
+\begin{DoxyCompactList}\small\item\em T\+CP destructor, closing socket. \end{DoxyCompactList}\item 
+int \hyperlink{classconnector_1_1client_3_01TCP_01_4_a9bca6347bbf5732e8974e69dc16d60e4}{init} ()
+\item 
+{\footnotesize template$<$class U $>$ }\\void \hyperlink{classconnector_1_1client_3_01TCP_01_4_aede666f3c255ad8821cb1c844702f046}{receive\+\_\+tcp} (U \&out) const
+\item 
+{\footnotesize template$<$class U $>$ }\\void \hyperlink{classconnector_1_1client_3_01TCP_01_4_a1b2a674bf93a7e1533016c2f8393d64c}{receive\+\_\+tcp} (U \&out, const size\+\_\+t buffer) const
+\item 
+{\footnotesize template$<$class U $>$ }\\void \hyperlink{classconnector_1_1client_3_01TCP_01_4_a71e97892c7765d1a156a364925ee1ca2}{send\+\_\+tcp} (U \&out) const
+\item 
+{\footnotesize template$<$class U $>$ }\\void \hyperlink{classconnector_1_1client_3_01TCP_01_4_ab61e009d01af8a21d138750ef0fceb47}{send\+\_\+tcp} (U \&out, const size\+\_\+t buffer) const
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct sockaddr\+\_\+in \hyperlink{classconnector_1_1client_3_01TCP_01_4_af68017a9141be44f9722c6958c6424fc}{\+\_\+serv\+Addr}
+\begin{DoxyCompactList}\small\item\em A container to store server information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classconnector_1_1client_3_01TCP_01_4_a7dfa650dcfcd1a0a313404133c71ecbc}\label{classconnector_1_1client_3_01TCP_01_4_a7dfa650dcfcd1a0a313404133c71ecbc}} 
+int \hyperlink{classconnector_1_1client_3_01TCP_01_4_a7dfa650dcfcd1a0a313404133c71ecbc}{\+\_\+skt}
+\begin{DoxyCompactList}\small\item\em The socket to send data to the client from. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classconnector_1_1client_3_01TCP_01_4_ae684172f0c1a61182e91939bf289e5d3}\label{classconnector_1_1client_3_01TCP_01_4_ae684172f0c1a61182e91939bf289e5d3}} 
+int {\bfseries \+\_\+port}
+\item 
+\mbox{\Hypertarget{classconnector_1_1client_3_01TCP_01_4_aabb486122e41c645c35e91569daece36}\label{classconnector_1_1client_3_01TCP_01_4_aabb486122e41c645c35e91569daece36}} 
+std\+::string {\bfseries \+\_\+ip}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classconnector_1_1client_3_01TCP_01_4_a9bca6347bbf5732e8974e69dc16d60e4}\label{classconnector_1_1client_3_01TCP_01_4_a9bca6347bbf5732e8974e69dc16d60e4}} 
+\index{connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}!init@{init}}
+\index{init@{init}!connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily int \hyperlink{classconnector_1_1client}{connector\+::client}$<$ T\+CP $>$\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+!\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]Modifying\+:
+\begin{DoxyItemize}
+\item {\ttfamily \+\_\+serv\+Addr}
+\item {\ttfamily \+\_\+skt}
+\item {\ttfamily \+\_\+ip}
+\item {\ttfamily \+\_\+port} 
+\end{DoxyItemize}\end{DoxyRefDesc}
+\mbox{\Hypertarget{classconnector_1_1client_3_01TCP_01_4_aede666f3c255ad8821cb1c844702f046}\label{classconnector_1_1client_3_01TCP_01_4_aede666f3c255ad8821cb1c844702f046}} 
+\index{connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}!receive\+\_\+tcp@{receive\+\_\+tcp}}
+\index{receive\+\_\+tcp@{receive\+\_\+tcp}!connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}}
+\subsubsection{\texorpdfstring{receive\+\_\+tcp()}{receive\_tcp()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class U $>$ \\
+void \hyperlink{classconnector_1_1client}{connector\+::client}$<$ T\+CP $>$\+::receive\+\_\+tcp (\begin{DoxyParamCaption}\item[{U \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]\end{DoxyRefDesc}
+\mbox{\Hypertarget{classconnector_1_1client_3_01TCP_01_4_a1b2a674bf93a7e1533016c2f8393d64c}\label{classconnector_1_1client_3_01TCP_01_4_a1b2a674bf93a7e1533016c2f8393d64c}} 
+\index{connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}!receive\+\_\+tcp@{receive\+\_\+tcp}}
+\index{receive\+\_\+tcp@{receive\+\_\+tcp}!connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}}
+\subsubsection{\texorpdfstring{receive\+\_\+tcp()}{receive\_tcp()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class U $>$ \\
+void \hyperlink{classconnector_1_1client}{connector\+::client}$<$ T\+CP $>$\+::receive\+\_\+tcp (\begin{DoxyParamCaption}\item[{U \&}]{out,  }\item[{const size\+\_\+t}]{buffer }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000003}{Todo}]\end{DoxyRefDesc}
+\mbox{\Hypertarget{classconnector_1_1client_3_01TCP_01_4_a71e97892c7765d1a156a364925ee1ca2}\label{classconnector_1_1client_3_01TCP_01_4_a71e97892c7765d1a156a364925ee1ca2}} 
+\index{connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}!send\+\_\+tcp@{send\+\_\+tcp}}
+\index{send\+\_\+tcp@{send\+\_\+tcp}!connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}}
+\subsubsection{\texorpdfstring{send\+\_\+tcp()}{send\_tcp()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class U $>$ \\
+void \hyperlink{classconnector_1_1client}{connector\+::client}$<$ T\+CP $>$\+::send\+\_\+tcp (\begin{DoxyParamCaption}\item[{U \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]\end{DoxyRefDesc}
+\mbox{\Hypertarget{classconnector_1_1client_3_01TCP_01_4_ab61e009d01af8a21d138750ef0fceb47}\label{classconnector_1_1client_3_01TCP_01_4_ab61e009d01af8a21d138750ef0fceb47}} 
+\index{connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}!send\+\_\+tcp@{send\+\_\+tcp}}
+\index{send\+\_\+tcp@{send\+\_\+tcp}!connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}}
+\subsubsection{\texorpdfstring{send\+\_\+tcp()}{send\_tcp()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class U $>$ \\
+void \hyperlink{classconnector_1_1client}{connector\+::client}$<$ T\+CP $>$\+::send\+\_\+tcp (\begin{DoxyParamCaption}\item[{U \&}]{out,  }\item[{const size\+\_\+t}]{buffer }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000005}{Todo}]\end{DoxyRefDesc}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classconnector_1_1client_3_01TCP_01_4_af68017a9141be44f9722c6958c6424fc}\label{classconnector_1_1client_3_01TCP_01_4_af68017a9141be44f9722c6958c6424fc}} 
+\index{connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}!\+\_\+serv\+Addr@{\+\_\+serv\+Addr}}
+\index{\+\_\+serv\+Addr@{\+\_\+serv\+Addr}!connector\+::client$<$ T\+C\+P $>$@{connector\+::client$<$ T\+C\+P $>$}}
+\subsubsection{\texorpdfstring{\+\_\+serv\+Addr}{\_servAddr}}
+{\footnotesize\ttfamily struct sockaddr\+\_\+in \hyperlink{classconnector_1_1client}{connector\+::client}$<$ T\+CP $>$\+::\+\_\+serv\+Addr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A container to store server information. 
+
+Members\+:
+\begin{DoxyItemize}
+\item {\ttfamily short} sin\+\_\+family
+\item {\ttfamily unsigned short} sin\+\_\+port
+\item {\ttfamily struct} in\+\_\+addr sin\+\_\+addr
+\item {\ttfamily char} sin\+\_\+zero\mbox{[}0\mbox{]}
+\end{DoxyItemize}
+
+Needed include\+: {\ttfamily $<$netinet/in.\+h$>$} 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+library/client.\+h\end{DoxyCompactItemize}

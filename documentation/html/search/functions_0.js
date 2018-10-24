@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['init_5freceiver_5fudp',['init_receiver_udp',['../classconnector_1_1receiver.html#a2c83b4a01edfa35dffe0cbe4556af0af',1,'connector::receiver']]],
-  ['init_5fsender_5fudp',['init_sender_udp',['../classconnector_1_1sender.html#ae9cd837112f0cbca040abe23a2a6ee9e',1,'connector::sender']]]
+  ['client',['client',['../classconnector_1_1client_3_01TCP_01_4.html#a7fdbdadfd0754818712f5d3329a17b0d',1,'connector::client&lt; TCP &gt;::client()'],['../classconnector_1_1client_3_01UDP_01_4.html#ac0fe47fc2a027af240d0d812c0bfc386',1,'connector::client&lt; UDP &gt;::client()']]]
 ];

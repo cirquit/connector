@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['send_5fudp',['send_udp',['../classconnector_1_1sender.html#af7f9d1a8b7939539040de4024d2a48ed',1,'connector::sender']]],
-  ['sender',['sender',['../classconnector_1_1sender.html',1,'connector']]]
+  ['send_5ftcp',['send_tcp',['../classconnector_1_1client_3_01TCP_01_4.html#a71e97892c7765d1a156a364925ee1ca2',1,'connector::client&lt; TCP &gt;::send_tcp(U &amp;out) const'],['../classconnector_1_1client_3_01TCP_01_4.html#ab61e009d01af8a21d138750ef0fceb47',1,'connector::client&lt; TCP &gt;::send_tcp(U &amp;out, const size_t buffer) const'],['../classconnector_1_1server_3_01TCP_01_4.html#aacfd27c6a4e59793c4440b8f3030e811',1,'connector::server&lt; TCP &gt;::send_tcp(U &amp;out) const'],['../classconnector_1_1server_3_01TCP_01_4.html#a89afed1ab41b02c9eb39bd617787a1f3',1,'connector::server&lt; TCP &gt;::send_tcp(U &amp;out, const size_t buffer) const']]],
+  ['send_5fudp',['send_udp',['../classconnector_1_1client_3_01UDP_01_4.html#abc0b3c6c80093a92137fbd27a604d658',1,'connector::client&lt; UDP &gt;::send_udp(U &amp;out) const'],['../classconnector_1_1client_3_01UDP_01_4.html#adab4762b60763433e487ffe8296e3280',1,'connector::client&lt; UDP &gt;::send_udp(U &amp;out, const size_t buffer) const'],['../classconnector_1_1server_3_01UDP_01_4.html#a404605c453a69e8faabf1aad3c3c606a',1,'connector::server&lt; UDP &gt;::send_udp(U &amp;out) const'],['../classconnector_1_1server_3_01UDP_01_4.html#a9559c1ceb62c8c1ef79046b6f1646f8d',1,'connector::server&lt; UDP &gt;::send_udp(U &amp;out, const size_t buffer) const']]],
+  ['server',['server',['../classconnector_1_1server.html',1,'connector::server&lt; T &gt;'],['../classconnector_1_1server_3_01TCP_01_4.html#ad1e9a8c5f732085dc8fac2587655318f',1,'connector::server&lt; TCP &gt;::server()'],['../classconnector_1_1server_3_01UDP_01_4.html#a87bd3c7f015d64676018c281ad19ffbe',1,'connector::server&lt; UDP &gt;::server()']]],
+  ['server_3c_20tcp_20_3e',['server&lt; TCP &gt;',['../classconnector_1_1server_3_01TCP_01_4.html',1,'connector']]],
+  ['server_3c_20udp_20_3e',['server&lt; UDP &gt;',['../classconnector_1_1server_3_01UDP_01_4.html',1,'connector']]]
 ];
